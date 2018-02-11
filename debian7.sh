@@ -244,6 +244,8 @@ service webmin restart
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
+# info
+clear
 echo "Autoscript AAPOO:" | tee log-install.txt
 echo "==========================================="  | tee -a log-install.txt
 echo "|                [Service]"  | tee -a log-install.txt
