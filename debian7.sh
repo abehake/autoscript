@@ -14,10 +14,10 @@ MYIP2="s/xxxxxxxxx/$MYIP/g";
 country=Malaysia
 state=Terengganu
 locality=Pake
-organization=-
-organizationalunit=-
+organization=.
+organizationalunit=.
 commonname=Hake
-email=-
+email=.
 
 # go to root
 cd
@@ -61,13 +61,13 @@ apt-get install neofetch
 # install figlet
 apt-get install figlet
 echo "clear" >> .bashrc
-echo echo -e ================================================== >> .bashrc
-echo 'figlet -k "<AAPOO>|"' >> .bashrc
-echo echo -e ================================================== >> .bashrc
+echo echo -e ================================================= >> .bashrc
+echo 'figlet -k "<AAPOO>"' >> .bashrc
+echo echo -e ================================================= >> .bashrc
 echo 'echo -e " Selamat datang ke autoscript AAPOO"' >> .bashrc
 echo 'echo -e " Credit to Hake"' >> .bashrc
 echo 'echo -e " Taip Menu"' >> .bashrc
-echo echo -e -------------------------------------------------- >> .bashrc
+echo echo -e ------------------------------------------------- >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
 # install webserver
@@ -172,23 +172,17 @@ cd ddos-deflate-master
 apt-get install stunnel4 -y
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
-pid = /stunnel.pid
-client = no	
+client = no
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-[ssh]
-accept = 21
-connect = 127.0.0.1:22
-connect = 127.0.0.1:143
-
 [dropbear]
 accept = 442
 connect = 127.0.0.1:443
-connect = 127.0.0.1:80
 connect = 127.0.0.1:109
 connect = 127.0.0.1:110
+connect = 127.0.0.1:80
 
 ;[squid]
 ;accept = 8080
@@ -256,7 +250,7 @@ echo "|                [Service]"  | tee -a log-install.txt
 echo "|------------------------------------------"  | tee -a log-install.txt
 echo "| OpenSSH   : 22, 143"  | tee -a log-install.txt
 echo "| Dropbear  : 80, 443"  | tee -a log-install.txt
-echo "| Ssl       : 443, 21
+echo "| Ssl       : 443"  | tee -a log-install.txt
 echo "| Squid3    : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
 echo "| OpenVPN   : TCP 1194"  | tee -a log-install.txt
 echo "| config vpn: http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
