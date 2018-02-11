@@ -44,7 +44,3 @@ echo " Cara pakai : kill [nombor PID] "
 echo "------------------------------------------------"
 
 echo "";
-
-echo "Modified by Aiman Amir";
-
-echo "";
