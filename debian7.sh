@@ -172,15 +172,21 @@ cd ddos-deflate-master
 apt-get install stunnel4 -y
 cat > /etc/stunnel/stunnel.conf <<-END
 cert = /etc/stunnel/stunnel.pem
-client = no
+pid = /stunnel.pid
+client = no	
 socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-
 [dropbear]
 accept = 442
-connect = 127.0.0.1:3128
+connect = 127.0.0.1:443
+connect = 127.0.0.1:109
+connect = 127.0.0.1:110
+
+;[squid]
+;accept = 8080
+;connect = 127.0.0.1:3128
 
 END
 
