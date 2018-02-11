@@ -15,7 +15,7 @@
 - DDOS Deflate
 - Fail2Ban
 - BadVPN
-- time= Kuala Lumpur/Malaysia
+- Time= Kuala Lumpur/Malaysia
 
 # Installation
 ● Mule2 pastikan VPS korang masih lagi fresh dan belum install apa².
