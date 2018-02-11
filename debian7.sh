@@ -13,6 +13,9 @@ apt-get upgrade -y  -q
 # install certificates
 apt-get install ca-certificates
 
+# install figlet
+apt-get install figlet
+
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
@@ -54,9 +57,6 @@ cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
 # update
 apt-get update
-
-# install figlet
-apt-get install figlet
 
 # install webserver
 apt-get -y install nginx
