@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Original script by Area 51 Reborn
-# Modified by Aiman Amir
+# Original script by AAPOO
+# Modified by Hake
 # =================================
 
 # initialisasi var
@@ -9,6 +9,15 @@ export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
+
+# detail
+country=Malaysia
+state=Terengganu
+locality=Pake
+organization=-
+organizationalunit=-
+commonname=Hake
+email=-
 
 # go to root
 cd
@@ -28,7 +37,7 @@ sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 service ssh restart
 
 # set repo
-wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/aimanamir/autoscript/master/sources.list.debian7"
+wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/abehake/script/master/sources.list.debian7"
 wget "http://www.dotdeb.org/dotdeb.gpg"
 wget "http://www.webmin.com/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
@@ -49,47 +58,53 @@ curl -L "https://bintray.com/user/downloadSubjectPublicKey?username=bintray" -o 
 apt-get update
 apt-get install neofetch
 
+# install figlet
+apt-get install figlet
 echo "clear" >> .bashrc
-echo 'echo -e "Selamat datang ke server $HOSTNAME"' >> .bashrc
-echo 'echo -e "Script modified by Aiman Amir"' >> .bashrc
-echo 'echo -e "Ketik menu untuk menampilkan daftar perintah"' >> .bashrc
+echo echo -e ================================================== >> .bashrc
+echo 'figlet -k "<AAPOO>|"' >> .bashrc
+echo echo -e ================================================== >> .bashrc
+echo 'echo -e " Selamat datang ke autoscript AAPOO"' >> .bashrc
+echo 'echo -e " Credit to Hake"' >> .bashrc
+echo 'echo -e " Taip Menu"' >> .bashrc
+echo echo -e -------------------------------------------------- >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
 # install webserver
 cd
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/aimanamir/autoscript/master/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/abehake/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by Aiman Amir</pre>" > /home/vps/public_html/index.html
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/aimanamir/autoscript/master/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/abehake/script/master/vps.conf"
 service nginx restart
 
 # install openvpn
-wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/aimanamir/autoscript/master/openvpn-debian.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/abehake/script/master/openvpn-debian.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/aimanamir/autoscript/master/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/abehake/script/master/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 iptables -t nat -I POSTROUTING -s 192.168.100.0/24 -o eth0 -j MASQUERADE
 iptables-save > /etc/iptables_yg_baru_dibikin.conf
-wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/aimanamir/autoscript/master/iptables"
+wget -O /etc/network/if-up.d/iptables "https://raw.githubusercontent.com/abehake/script/master/iptables"
 chmod +x /etc/network/if-up.d/iptables
 service openvpn restart
 
 # konfigurasi openvpn
 cd /etc/openvpn/
-wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/aimanamir/autoscript/master/client-1194.conf"
+wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/abehake/script/master/client-1194.conf"
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
 
 # install badvpn
 cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/aimanamir/autoscript/master/badvpn-udpgw"
+wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/abehake/script/master/badvpn-udpgw"
 if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/aimanamir/autoscript/master/badvpn-udpgw64"
+  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/abehake/script/master/badvpn-udpgw64"
 fi
 sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
 chmod +x /usr/bin/badvpn-udpgw
@@ -134,7 +149,7 @@ service fail2ban restart
 # install squid3
 cd
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/aimanamir/autoscript/master/squid3.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/abehake/script/master/squid3.conf"
 sed -i $MYIP2 /etc/squid3/squid.conf;
 service squid3 restart
 
@@ -148,39 +163,77 @@ service webmin restart
 
 # install ddos deflate
 apt-get -y install dnsutils dsniff
-wget https://raw.githubusercontent.com/aimanamir/autoscript/master/ddos-deflate-master.zip
+wget https://raw.githubusercontent.com/abehake/script/master/ddos-deflate-master.zip
 unzip ddos-deflate-master.zip
 cd ddos-deflate-master
 ./install.sh
 
+# install stunnel
+apt-get install stunnel4 -y
+cat > /etc/stunnel/stunnel.conf <<-END
+cert = /etc/stunnel/stunnel.pem
+pid = /stunnel.pid
+client = no	
+socket = a:SO_REUSEADDR=1
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+
+[ssh]
+accept = 21
+connect = 127.0.0.1:22
+connect = 127.0.0.1:143
+
+[dropbear]
+accept = 442
+connect = 127.0.0.1:443
+connect = 127.0.0.1:80
+connect = 127.0.0.1:109
+connect = 127.0.0.1:110
+
+;[squid]
+;accept = 8080
+;connect = 127.0.0.1:3128
+
+END
+
+#membuat sertifikat
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095 \
+-subj "/C=$country/ST=$state/L=$locality/O=$organization/OU=$organizationalunit/CN=$commonname/emailAddress=$email"
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+
+#konfigurasi stunnel
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
+
 # download script
 cd /usr/bin
-wget -O menu "https://raw.githubusercontent.com/aimanamir/autoscript/master/menu.sh"
-wget -O usernew "https://raw.githubusercontent.com/aimanamir/autoscript/master/usernew.sh"
-wget -O trial "https://raw.githubusercontent.com/aimanamir/autoscript/master/trial.sh"
-wget -O hapus "https://raw.githubusercontent.com/aimanamir/autoscript/master/hapus.sh"
-wget -O cek "https://raw.githubusercontent.com/aimanamir/autoscript/master/user-login.sh"
-wget -O userlimit "https://raw.githubusercontent.com/aimanamir/autoscript/master/userlimit.sh"
-wget -O userlimitssh "https://raw.githubusercontent.com/aimanamir/autoscript/master/userlimitssh.sh"
-wget -O member "https://raw.githubusercontent.com/aimanamir/autoscript/master/user-list.sh"
-wget -O resvis "https://raw.githubusercontent.com/aimanamir/autoscript/master/resvis.sh"
-wget -O speedtest "https://raw.githubusercontent.com/aimanamir/autoscript/master/speedtest_cli.py"
-wget -O info "https://raw.githubusercontent.com/aimanamir/autoscript/master/info.sh"
-wget -O about "https://raw.githubusercontent.com/aimanamir/autoscript/master/about.sh"
+wget -O menu "https://raw.githubusercontent.com/abehake/script/master/menu.sh"
+wget -O new "https://raw.githubusercontent.com/abehake/script/master/usernew.sh"
+wget -O trial "https://raw.githubusercontent.com/abehake/script/master/trial.sh"
+wget -O delete "https://raw.githubusercontent.com/abehake/script/master/hapus.sh"
+wget -O login "https://raw.githubusercontent.com/abehake/script/master/user-login.sh"
+wget -O dropbear "https://raw.githubusercontent.com/abehake/script/master/userlimit.sh"
+wget -O ssh "https://raw.githubusercontent.com/abehake/script/master/userlimitssh.sh"
+wget -O list "https://raw.githubusercontent.com/abehake/script/master/user-list.sh"
+wget -O resvis "https://raw.githubusercontent.com/abehake/script/master/resvis.sh"
+wget -O speedtest "https://raw.githubusercontent.com/abehake/script/master/speedtest_cli.py"
+wget -O info "https://raw.githubusercontent.com/abehake/script/master/info.sh"
+wget -O about "https://raw.githubusercontent.com/abehake/script/master/about.sh"
 
 echo "0 0 * * * root /sbin/reboot" > /etc/cron.d/reboot
 
 chmod +x menu
-chmod +x usernew
+chmod +x new
 chmod +x trial
-chmod +x hapus
-chmod +x cek
-chmod +x member
+chmod +x delete
+chmod +x login
+chmod +x dropbear
+chmod +x ssh
+chmod +x list
 chmod +x resvis
 chmod +x speedtest
 chmod +x info
-chmod +x userlimit
-chmod +x userlimitssh
 chmod +x about
 
 # finishing
@@ -197,49 +250,31 @@ service webmin restart
 rm -rf ~/.bash_history && history -c
 echo "unset HISTFILE" >> /etc/profile
 
-# info
-clear
-echo "Autoscript Include:" | tee log-install.txt
-echo "===========================================" | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Service"  | tee -a log-install.txt
-echo "-------"  | tee -a log-install.txt
-echo "OpenSSH  : 22, 143"  | tee -a log-install.txt
-echo "Dropbear : 80, 443"  | tee -a log-install.txt
-echo "Squid3   : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "OpenVPN  : TCP 1194 (client config : http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
-echo "badvpn   : badvpn-udpgw port 7300"  | tee -a log-install.txt
-echo "nginx    : 81"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Script"  | tee -a log-install.txt
-echo "------"  | tee -a log-install.txt
-echo "menu         (Menampilkan daftar perintah yang tersedia)"  | tee -a log-install.txt
-echo "usernew      (Membuat Akun SSH)"  | tee -a log-install.txt
-echo "trial        (Membuat Akun Trial)"  | tee -a log-install.txt
-echo "hapus        (Menghapus Akun SSH)"  | tee -a log-install.txt
-echo "cek          (Cek User Login)"  | tee -a log-install.txt
-echo "member       (Cek Member SSH)"  | tee -a log-install.txt
-echo "userlimit    (Limit login Dropbear)"  | tee -a log-install.txt
-echo "userlimitssh (Limit login SSHD)"  | tee -a log-install.txt
-echo "resvis       (Restart Service dropbear, webmin, squid3, openvpn dan ssh)"  | tee -a log-install.txt
-echo "reboot       (Reboot VPS)"  | tee -a log-install.txt
-echo "speedtest    (Speedtest VPS)"  | tee -a log-install.txt
-echo "info         (Menampilkan Informasi Sistem)"  | tee -a log-install.txt
-echo "about        (Informasi tentang script auto install)"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Fitur lain"  | tee -a log-install.txt
-echo "----------"  | tee -a log-install.txt
-echo "Webmin   : http://$MYIP:10000/"  | tee -a log-install.txt
-echo "Timezone : Asia/Kuala Lumpur (GMT +8)"  | tee -a log-install.txt
-echo "IPv6     : [off]"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Original Script by Area 51 Reborn"  | tee -a log-install.txt
-echo "Modified by Aiman Amir"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
-echo "VPS AUTO REBOOT TIAP JAM 12 MALAM"  | tee -a log-install.txt
-echo ""  | tee -a log-install.txt
+echo "Autoscript AAPOO:" | tee log-install.txt
 echo "==========================================="  | tee -a log-install.txt
+echo "|                [Service]"  | tee -a log-install.txt
+echo "|------------------------------------------"  | tee -a log-install.txt
+echo "| OpenSSH   : 22, 143"  | tee -a log-install.txt
+echo "| Dropbear  : 80, 443"  | tee -a log-install.txt
+echo "| Ssl       : 443, 21
+echo "| Squid3    : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
+echo "| OpenVPN   : TCP 1194"  | tee -a log-install.txt
+echo "| config vpn: http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
+echo "| badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
+echo "| nginx     : 81"  | tee -a log-install.txt
+echo "| Webmin    : http://$MYIP:10000"  | tee -a log-install.txt
+echo "| Timezone  : Asia/Kuala Lumpur (GMT +8)"  | tee -a log-install.txt
+echo "| IPv6      : [off]"  | tee -a log-install.txt
+echo "-------------------------------------------"  | tee -a log-install.txt
+echo "| Fail2ban"  | tee -a log-install.txt
+echo "| Ddos Deflate"  | tee -a log-install.txt
+echo "| BlockirTorrent"  | tee -a log-install.txt
+echo "| VPS AUTO REBOOT PADA PUKUL 12 MALAM"  | tee -a log-install.txt
+echo "-------------------------------------------"  | tee -a log-install.txt
+echo "| AUTOSCRIPT AAPOO by HAKE"  | tee -a log-install.txt
+echo "| Channel (https://telegram.me/Interpass)"  | tee -a log-install.txt
+echo "| Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
+echo "==========================================="  | tee -a log-install.txt
+echo ""  | tee -a log-install.txt
 cd
 rm -f /root/debian7.sh
