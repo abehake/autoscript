@@ -247,6 +247,7 @@ service nginx start
 service openvpn restart
 service cron restart
 service ssh restart
+service stuunel4 restart
 service dropbear restart
 service squid3 restart
 service fail2ban restart
