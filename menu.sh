@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "clear" >> .bashrc
+echo "clear"
 echo -e "================================================="
 echo -e "|--------------------AAPOO----------------------|"
 echo -e "|  Terima Kasih Kerana Telah Menggunakan AAPOO  |"
