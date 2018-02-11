@@ -7,7 +7,7 @@
 - OpenSSH
 - OpenVPN
 - Dropbear
-- ssl
+- Ssl
 - Squid3
 - Webmin
 - Userlimit
