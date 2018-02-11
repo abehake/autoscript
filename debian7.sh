@@ -11,9 +11,9 @@ MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
 # detail
-country=Malaysia
+country=ID
 state=Terengganu
-locality=Pake
+locality=.
 organization=.
 organizationalunit=.
 commonname=Hake
@@ -184,9 +184,6 @@ connect = 127.0.0.1:443
 connect = 127.0.0.1:109
 connect = 127.0.0.1:110
 
-;[squid]
-;accept = 8080
-;connect = 127.0.0.1:3128
 
 END
 
