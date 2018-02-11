@@ -183,8 +183,11 @@ accept = 442
 connect = 127.0.0.1:443
 connect = 127.0.0.1:109
 connect = 127.0.0.1:110
+connect = 127.0.0.1:80
 
-
+;[squid]
+;accept = 8080
+;connect = 127.0.0.1:3128
 END
 
 #membuat sertifikat
@@ -195,7 +198,7 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 
 #konfigurasi stunnel
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-/etc/init.d/stunnel4 restar
+/etc/init.d/stunnel4 restart
 
 # download script
 cd /usr/bin
