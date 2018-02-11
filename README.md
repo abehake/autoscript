@@ -8,6 +8,7 @@ Script ini adlh versi upgraded, aq ad tambah sikit bberapa feature yg penting un
 - OpenSSH
 - OpenVPN
 - Dropbear
+- ssl
 - Squid3
 - Webmin
 - Userlimit
@@ -17,18 +18,7 @@ Script ini adlh versi upgraded, aq ad tambah sikit bberapa feature yg penting un
 - BadVPN
 
 # Installation
-Copy paste script dibawah ke dalam VPS korang dan tekan 'ENTER'.
-
-`apt-get update && apt-get install ca-certificates && wget https://raw.githubusercontent.com/aimanamir/autoscript/master/debian7.sh && chmod +x debian7.sh && bash debian7.sh`
-
 Proses install ambil masa lebih kurang 5-6 minit untuk siap.
 
 # Support
-Kalau ad sebarang masalah dgn script ni, sila 'Pull Request'.
-Atau boleh pm aq dlm Telegram. Tq.
-
-# Contact me
-Telegram: [@NamiaKai](https://t.me/namiakai)
-
-# Donate
-PayPal: [aimanamir](https://paypal.me/aimanamir)
+Kalau ad sebarang masalah dgn script ni, sila 'Pull Request'
