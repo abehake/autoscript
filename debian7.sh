@@ -4,6 +4,15 @@
 # Modified by Hake
 # =================================
 
+# update
+apt-get update
+
+# upgrade
+apt-get upgrade -y  -q
+
+# install certificates
+apt-get install ca-certificates
+
 # initialisasi var
 export DEBIAN_FRONTEND=noninteractive
 OS=`uname -m`;
