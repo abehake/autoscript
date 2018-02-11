@@ -1,6 +1,7 @@
 # Autoscript AAPOO
-Pertama sekali, aq nk ucap terima kasih kepada semua yg terlibat secara langsung atau tidak langsung dalam penghasilan autoscript installer ini.
-Script ini adlh versi upgraded, aq ad tambah sikit bberapa feature yg penting untuk berjualan SSH dan VPN.
+● Pertama sekali, aq nk ucap terima kasih kepada semua yg terlibat secara langsung atau tidak langsung dalam penghasilan autoscript installer ini.
+
+● Script ini adalah versi upgraded, aq ad tambah sikit bberapa feature yg penting untuk berjualan SSH dan VPN.
 
 # Feature
 - OpenSSH
