@@ -64,9 +64,9 @@ echo "clear" >> .bashrc
 echo echo -e ================================================= >> .bashrc
 echo 'figlet -k "<AAPOO>"' >> .bashrc
 echo echo -e ================================================= >> .bashrc
-echo 'echo -e " Selamat datang ke autoscript AAPOO"' >> .bashrc
-echo 'echo -e " Credit to Hake"' >> .bashrc
-echo 'echo -e " Taip Menu"' >> .bashrc
+echo 'echo -e "● Selamat datang ke autoscript AAPOO"' >> .bashrc
+echo 'echo -e "● Credit to Hake"' >> .bashrc
+echo 'echo -e "● Taip Menu"' >> .bashrc
 echo echo -e ------------------------------------------------- >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
@@ -250,26 +250,26 @@ echo "Autoscript AAPOO:" | tee log-install.txt
 echo "==========================================="  | tee -a log-install.txt
 echo "|                [Service]"  | tee -a log-install.txt
 echo "|------------------------------------------"  | tee -a log-install.txt
-echo "| OpenSSH   : 22, 143"  | tee -a log-install.txt
-echo "| Dropbear  : 80, 443"  | tee -a log-install.txt
-echo "| Ssl       : 443"  | tee -a log-install.txt
-echo "| Squid3    : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
-echo "| OpenVPN   : TCP 1194"  | tee -a log-install.txt
-echo "| config vpn: http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
-echo "| badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
-echo "| nginx     : 81"  | tee -a log-install.txt
-echo "| Webmin    : http://$MYIP:10000"  | tee -a log-install.txt
-echo "| Timezone  : Asia/Kuala Lumpur (GMT +8)"  | tee -a log-install.txt
-echo "| IPv6      : [off]"  | tee -a log-install.txt
+echo "|● OpenSSH   : 22, 143"  | tee -a log-install.txt
+echo "|● Dropbear  : 80, 443"  | tee -a log-install.txt
+echo "|● Ssl       : 443"  | tee -a log-install.txt
+echo "|● Squid3    : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
+echo "|● OpenVPN   : TCP 1194"  | tee -a log-install.txt
+echo "|● config vpn: http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
+echo "|● badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
+echo "|● nginx     : 81"  | tee -a log-install.txt
+echo "|● Webmin    : http://$MYIP:10000"  | tee -a log-install.txt
+echo "|● Timezone  : Asia/Kuala Lumpur (GMT +8)"  | tee -a log-install.txt
+echo "|● IPv6      : [off]"  | tee -a log-install.txt
 echo "-------------------------------------------"  | tee -a log-install.txt
-echo "| Fail2ban"  | tee -a log-install.txt
-echo "| Ddos Deflate"  | tee -a log-install.txt
-echo "| BlockirTorrent"  | tee -a log-install.txt
-echo "| VPS AUTO REBOOT PADA PUKUL 12 MALAM"  | tee -a log-install.txt
+echo "|● Fail2ban"  | tee -a log-install.txt
+echo "|● Ddos Deflate"  | tee -a log-install.txt
+echo "|● BlockirTorrent"  | tee -a log-install.txt
+echo "|● VPS AUTO REBOOT PADA PUKUL 12 MALAM"  | tee -a log-install.txt
 echo "-------------------------------------------"  | tee -a log-install.txt
-echo "| AUTOSCRIPT AAPOO by HAKE"  | tee -a log-install.txt
-echo "| Channel (https://telegram.me/Interpass)"  | tee -a log-install.txt
-echo "| Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
+echo "|● AUTOSCRIPT AAPOO by HAKE"  | tee -a log-install.txt
+echo "|● Channel (https://telegram.me/Interpass)"  | tee -a log-install.txt
+echo "|● Log Instalasi --> /root/log-install.txt"  | tee -a log-install.txt
 echo "==========================================="  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 cd
