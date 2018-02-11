@@ -55,6 +55,9 @@ cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 # update
 apt-get update
 
+# install figlet
+apt-get install figlet
+
 # install webserver
 apt-get -y install nginx
 
@@ -67,8 +70,6 @@ curl -L "https://bintray.com/user/downloadSubjectPublicKey?username=bintray" -o 
 apt-get update
 apt-get install neofetch
 
-# install figlet
-apt-get install figlet
 echo "clear" >> .bashrc
 echo echo -e ================================================= >> .bashrc
 echo 'figlet -k "<AAPOO>"' >> .bashrc
@@ -85,7 +86,7 @@ rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/abehake/script/master/nginx.conf"
 mkdir -p /home/vps/public_html
-echo "<pre>Setup by Aiman Amir</pre>" > /home/vps/public_html/index.html
+echo "<pre>Setup by Hake</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/abehake/script/master/vps.conf"
 service nginx restart
 
