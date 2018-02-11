@@ -1,13 +1,12 @@
 #!/bin/bash
 
-echo "clear"
+clear
 echo -e "================================================="
 echo -e "|--------------------AAPOO----------------------|"
 echo -e "|  Terima Kasih Kerana Telah Menggunakan AAPOO  |"
 echo -e "|         Autoscript Ini Dibuat Oleh Hake       |"
 echo -e "|           Sila Taip Command Dibawah           |"
 echo -e "================================================="
-echo -e ""
 echo -e ""
 echo -e ""
 echo -e ""
