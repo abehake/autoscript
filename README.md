@@ -27,6 +27,9 @@ Script ini adlh versi upgraded, aq ad tambah sikit bberapa feature yg penting un
 
 # Addition
 ● Kalau ad sebarang masalah dgn script ni, sila 'Pull Request'
+
 ● atau bole direct ke telegram https://telegram.me/hake30
+
 ● Channel: https://telegram.me/Interpass
+
 ● Group https:https://telegram.me/InterpassGroup
