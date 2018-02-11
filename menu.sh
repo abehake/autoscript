@@ -3,7 +3,7 @@
 echo "clear" >> .bashrc
 echo -e "================================================="
 echo -e "|--------------------AAPOO----------------------|"
-echo -e "|  Terimak asih Kerana Telah Menggunakan AAPOO  |"
+echo -e "|  Terima Kasih Kerana Telah Menggunakan AAPOO  |"
 echo -e "|         Autoscript Ini Dibuat Oleh Hake       |"
 echo -e "|           Sila Taip Command Dibawah           |"
 echo -e "================================================="
