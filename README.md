@@ -4,11 +4,11 @@
 ● Script ini adalah versi upgraded, aq ad tambah sikit bberapa feature yg penting untuk berjualan SSH dan VPN.
 
 # Feature
-- OpenSSH
+- OpenSSH : 22,143
 - OpenVPN
-- Dropbear
-- Ssl
-- Squid3
+- Dropbear : 109,110,443
+- Ssl : 442
+- Squid3 : 80,8000,8080,3128
 - Webmin
 - Userlimit
 - Block Torrent
