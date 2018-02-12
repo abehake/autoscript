@@ -7,7 +7,7 @@
 - OpenSSH : 22,143
 - OpenVPN
 - Dropbear : 109,110,443
-- Ssl : 442
+- Ssl : 21(ssh), 442(dropbear)
 - Squid3 : 80,8000,8080,3128
 - Webmin
 - Userlimit
