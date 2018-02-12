@@ -72,7 +72,7 @@ apt-get install neofetch
 
 echo "clear" >> .bashrc
 echo echo -e ================================================= >> .bashrc
-echo 'figlet -k "<AAPOO>"' >> .bashrc
+echo 'figlet -k "<AAPPOO>"' >> .bashrc
 echo echo -e ================================================= >> .bashrc
 echo 'echo -e "● Selamat datang ke autoscript AAPOO"' >> .bashrc
 echo 'echo -e "● Credit to Hake"' >> .bashrc
