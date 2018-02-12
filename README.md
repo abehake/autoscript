@@ -1,4 +1,4 @@
-# Autoscript AAPOO
+# Autoscript AAPPOO
 ● Pertama sekali, aq nk ucap terima kasih kepada semua yg terlibat secara langsung atau tidak langsung dalam penghasilan autoscript installer ini.
 
 ● Script ini adalah versi upgraded, aq ad tambah sikit bberapa feature yg penting untuk berjualan SSH dan VPN.
