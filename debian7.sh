@@ -130,7 +130,7 @@ service ssh restart
 apt-get -y install dropbear
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=443/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 80"/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 443 -p 110 -p 109"/g' /etc/default/dropbear
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 service ssh restart
@@ -193,11 +193,12 @@ accept = 442
 connect = 127.0.0.1:443
 connect = 127.0.0.1:109
 connect = 127.0.0.1:110
-connect = 127.0.0.1:80
 
 ;[squid]
-;accept = 8080
+;accept = 8000
 ;connect = 127.0.0.1:3128
+;connect = 127.0.0.1:80
+;connect = 127.0.0.1:8080
 END
 
 #membuat sertifikat
@@ -262,9 +263,9 @@ echo "==========================================="  | tee -a log-install.txt
 echo "|                [Service]"  | tee -a log-install.txt
 echo "|------------------------------------------"  | tee -a log-install.txt
 echo "|● OpenSSH   : 22, 143"  | tee -a log-install.txt
-echo "|● Dropbear  : 80, 443"  | tee -a log-install.txt
-echo "|● Ssl       : 443"  | tee -a log-install.txt
-echo "|● Squid3    : 8080, 3128 (limit to IP SSH)"  | tee -a log-install.txt
+echo "|● Dropbear  : 109,110,443"  | tee -a log-install.txt
+echo "|● Ssl       : 442"  | tee -a log-install.txt
+echo "|● Squid3    : 3128,80,8080,3128 (limit to IP SSH)"  | tee -a log-install.txt
 echo "|● OpenVPN   : TCP 1194"  | tee -a log-install.txt
 echo "|● config vpn: http://$MYIP:81/client.ovpn)"  | tee -a log-install.txt
 echo "|● badvpn    : badvpn-udpgw port 7300"  | tee -a log-install.txt
