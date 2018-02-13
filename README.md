@@ -31,6 +31,6 @@
 
 ● atau bole direct ke telegram https://telegram.me/hake30
 
-● Channel: https://telegram.me/Interpass
+● Channel : https://telegram.me/Interpass
 
-● Group https:https://telegram.me/InterpassGroup
+● Group : https://telegram.me/InterpassGroup
