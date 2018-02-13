@@ -20,7 +20,7 @@
 # Installation
 ● Mule2 pastikan VPS korang masih lagi fresh dan belum install apa².
 
-● wget https://raw.githubusercontent.com/abehake/script/master/debian.sh && chmod +x debian.sh && bash debian.sh
+'wget https://raw.githubusercontent.com/abehake/script/master/debian.sh && chmod +x debian.sh && bash debian.sh'
 
 ● copy n paste command atas ni di terminal masing2
 
