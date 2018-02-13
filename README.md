@@ -8,7 +8,7 @@
 - OpenVPN
 - Dropbear : 109,110,443
 - Ssl : 21(ssh), 442(dropbear)
-- Squid3 : 80,8000,8080,3128(limit to ip)
+- Squid3 : 80,8000,8080,3128(limit to ip SSH)
 - Webmin
 - Userlimit
 - Block Torrent
