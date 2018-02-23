@@ -1,42 +1,68 @@
 #!/bin/bash
 
-space='%-10s %-10s %-10s %-10s %s\n'
-space2='%-9s %-9s %-9s %-9s %s\n'
-line='-----------------------------------------'
-total="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
-exp='0'
-active='0'
-lock='0'
-echo "$line"
-printf "$space" "user" "expire" "exp_date" "detail"
-echo "$line"
-cat /etc/shadow | cut -d: -f1,8 | sed /:$/d > /tmp/user.txt
-count=`cat /tmp/user.txt | wc -l`
-for((i=1; i<=$count; i++ ))
-do
-        serval=`head -n $i /tmp/user.txt | tail -n 1`
-        username=`echo $serval |cut -f1 -d:`
-        inexp=`echo $serval |cut -f2 -d:`
-        second=$(($inexp * 86400))
-        inday=`date -d @$second`
-        expired="$(chage -l $username | grep "Account expires" | awk -F": " '{print $2}')"
-        date=`echo $inday |awk -F" " '{print $2,$6}'`
-        jam=`date '+%s'`
-        week=$(( $jam + 604800 ))
-        if [$second -ge $jam];then
-                printf "$space2" "$username" "$expired"  "active"  "nolock"
-                active=$(($active + 1))
-        if [$second -le $week];then
-                printf "$space2" "$username" "$expired" "active" "lock"
-                lock=$(($lock + 1))
-        fi
-        else
-                printf "$space2" "$username" "$expired" "expired" "nolock"
-                exp=$(($exp + 1))
-                passwd -1 $username
-        fi
-done
-echo "$line"
-printf "$space2" "user: $total" "active: $active" "expired: $exp"  "lock: $lock"
-echo "$line"
+            echo""
 
+
+             if [ ! -e /usr/local/bin/auto-limit-script.sh ]; then
+            echo 'FATAL ERROR'
+            echo 'Error Code: 404'
+            echo 'Mohon update premium script Anda!'
+             fi
+
+            echo "--------------------------------------------------"
+            echo "Menu Sistem Limit User (Kill Multi Login) otomatis"
+            echo "--------------------------------------------------"
+            echo "1.  Set Auto Kill Multi Login 3 menit sekali"
+            echo "2.  Set Auto Kill Multi Login 5 menit sekali"
+            echo "3.  Set Auto Kill Multi Login 7 menit sekali"
+            echo "4.  Set Auto Kill Multi Login 10 menit sekali"
+            echo "5.  Set Auto Kill Multi Login 15 menit sekali"
+            echo "6.  Set Auto Kill Multi Login 30 menit sekali"
+            echo "7.  Matikan Auto-Limit"
+            echo "8.  Lihat log user yang melakukan multilogin"
+            echo "9.  Hapus log limit"
+            echo "--------------------------------------------------"
+            read -p "Tulis Pilihan Anda (angka): " x
+
+            if (($x<7)); then
+            echo " "
+            echo "--------------------------------------------------"
+            read -p "jumlah multilogin maksimum yang diizinkan: " max
+
+            fi
+            if test $x -eq 1; then
+            echo "*/3 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 3 menit sekali."
+            elif test $x -eq 2; then
+            echo "*/5 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 5 menit sekali."
+            elif test $x -eq 3; then
+            echo "*/7 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 7 menit sekali."
+            elif test $x -eq 4; then
+            echo "*/10 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 10 menit sekali."
+            elif test $x -eq 5; then
+            echo "*/15 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 15 menit sekali."
+            elif test $x -eq 6; then
+            echo "*/30 * * * *  root /usr/local/bin/auto-limit-script.sh $max" > /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil diset 30 menit sekali."
+            elif test $x -eq 7; then
+            rm -f /etc/cron.d/auto-limit-script.sh
+            echo "User-Auto-Limit telah berhasil dimatikan."
+            elif test $x -eq 8; then
+            if [ ! -e /root/log-limit.txt ]; then
+        	echo "Belum ada user yang melakukan multilogin yang terdeteksi"
+        	else 
+        	echo 'Log user yang terdeteksi melakukan multilogin'
+        	echo "-------"
+         	cat /root/log-limit.txt
+            fi
+            elif test $x -eq 9; then
+            echo "" > /root/log-limit.txt
+            echo "Log berhasil dihapus!"
+            else
+            echo "Pilihan Tidak Terdapat Di Menu."
+            exit
+            fi
